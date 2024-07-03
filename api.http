@@ -1,0 +1,51 @@
+# CREATE USER
+
+POST http://localhost:3333/users
+Content-Type: application/json
+
+{
+  "email": "claudia_aruniky@gmail.com",
+  "password": "123456"
+}
+
+###
+
+# REQUEST RESET PASSWORD
+
+POST http://localhost:3333/request-password-reset
+Content-type: application/json
+
+{
+  "email": "claudia_aruniky@gmail.com"
+}
+
+
+###
+
+# Change Password 
+POST http://localhost:3333/reset-password?token=a93867e5e76e33906c7ca5874d6f35ef49f9013818df8a484fdaffad8d16d435
+Content-type: application/json
+
+{
+  "password": "GostoDeBoloEDinheiro"
+}
+
+
+### 
+
+# GET USERS
+GET http://localhost:3333/users
+Content-Type: application/json
+
+
+###
+
+
+#LOGIN TEST
+POST http://localhost:3333/login
+Content-Type: application/json
+
+{
+  "email": "claudia_aruniky@gmail.com",
+  "password": "GostoDeBoloEDinheiro"
+}
