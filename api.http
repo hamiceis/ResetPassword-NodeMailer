@@ -1,51 +1,102 @@
 # CREATE USER
-
 POST http://localhost:3333/users
 Content-Type: application/json
 
 {
-  "email": "claudia_aruniky@gmail.com",
+  "name": "Ana Vivian de Melo",
+  "email": "ana_vivian@gmail.com",
+  "password": "123456"
+}
+
+###
+
+# CREATE INSTRUCTOR
+POST http://localhost:3333/instructors
+Content-Type: application/json
+
+{
+  "name": "Hamiceis Pereira",
+  "email": "hamiceis@test.com",
   "password": "123456"
 }
 
 ###
 
 # REQUEST RESET PASSWORD
-
 POST http://localhost:3333/request-password-reset
-Content-type: application/json
+Content-Type: application/json
 
 {
   "email": "claudia_aruniky@gmail.com"
 }
 
-
 ###
 
-# Change Password 
+# CHANGE PASSWORD
 POST http://localhost:3333/reset-password?token=a93867e5e76e33906c7ca5874d6f35ef49f9013818df8a484fdaffad8d16d435
-Content-type: application/json
+Content-Type: application/json
 
 {
   "password": "GostoDeBoloEDinheiro"
 }
 
-
-### 
+###
 
 # GET USERS
 GET http://localhost:3333/users
 Content-Type: application/json
 
+###
+
+# GET INSTRUCTORS
+GET http://localhost:3333/instructors
+Content-Type: application/json
 
 ###
 
+# GET ALL REQUESTS FOR AN INSTRUCTOR BY ID
+GET http://localhost:3333/instructors/cly92v8gz0000iqmkedp534w7/requests
+Content-Type: application/json
 
-#LOGIN TEST
+###
+
+# LOGIN TEST
 POST http://localhost:3333/login
 Content-Type: application/json
 
 {
-  "email": "claudia_aruniky@gmail.com",
-  "password": "GostoDeBoloEDinheiro"
+  "email": "ana_vivian@gmail.com",
+  "password": "123456"
+}
+
+###
+
+# GET UNIQUE USER BY ID
+GET http://localhost:3333/users/clyadtzxd000011cbsp7kpx5a
+Content-Type: application/json
+
+###
+
+# USER SEND REQUEST TO INSTRUCTOR
+POST http://localhost:3333/users/send-request/cly92v8gz0000iqmkedp534w7
+Content-Type: application/json
+x-user-id: clyabhl9u0000krtnh1qxvx6i
+
+###
+
+# USER CANCEL REQUEST
+DELETE http://localhost:3333/users/cancel-request
+Content-Type: application/json
+x-user-id: clyabhl9u0000krtnh1qxvx6i
+
+###
+
+# INSTRUCTOR ACCEPT OR REJECT REQUESTS WITH STATUS "PENDING"
+POST http://localhost:3333/instructors/response-request
+Content-Type: application/json
+
+{
+  "requestId": "cly9hlnbh00019x8woy5v3kqh",
+  "instructorId": "cly92v8gz0000iqmkedp534w7",
+  "status": "accepted"
 }
